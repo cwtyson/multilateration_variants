@@ -2,9 +2,9 @@
 library(tidyverse)
 
 ## Get grid points
-source("/Users/tyson/Documents/git/CTT_data_process/R/functions/get_grid_points_fn_zebby.R")
+source("./R/get_grid_points_fn.R")
 source("./R/prepare_fn.R")
-grid_points <- get_grid_points_fn_zebby(grid_points_folder = '/Users/tyson/Library/CloudStorage/GoogleDrive-cwtyson@gmail.com/My Drive/Zebby_tracking_field_data/grid_points',
+grid_points <- get_grid_points_fn(grid_points_folder = '/Users/tyson/Library/CloudStorage/GoogleDrive-cwtyson@gmail.com/My Drive/Zebby_tracking_field_data/grid_points',
                                         crs = 3308)
 
 ## Read in processed
