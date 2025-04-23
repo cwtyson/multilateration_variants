@@ -5,7 +5,8 @@ library(dplyr)
 ## Localize function
 source("./R/localize_fn.R")
 
-cl <- parallel::makeForkCluster(3, outfile = "")
+cores <- parallel::detectCores()
+cl <- parallel::makeForkCluster(cores-2, outfile = "")
 doParallel::registerDoParallel(cl)
 
 ## Prepared files
