@@ -6,20 +6,17 @@ library(dplyr)
 source("./R/localize_fn.R")
 
 cores <- parallel::detectCores()
-cl <- parallel::makeForkCluster(cores-2, outfile = "")
+cl <- parallel::makeForkCluster(cores-11, outfile = "")
 doParallel::registerDoParallel(cl)
 
 ## Prepared files
 files = list.files("./outputs/prepared/")
 
-## Model path
-rssi_dist_model_file = "./data/RSSI_log_dist_model_zebby.RDS"
-
 foreach(f = files,
         .packages=c("tidyverse","geosphere"),
         .verbose = TRUE) %dopar%
   { localize_fn(prepared_file =  f,
-                rssi_dist_model_file = rssi_dist_model_file,
-                reps = 100)
+                reps = 100,
+                model_scale = "exp")
   }
 
